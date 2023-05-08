@@ -11,7 +11,7 @@ const createFolder = async () => {
   }
 };
 
-const readFolder = async () => {
+const copyFolder = async () => {
   try {
     const files = await fs.promises.readdir(path.join(__dirname, 'files'));
     files.forEach(file => {
@@ -25,4 +25,4 @@ const readFolder = async () => {
 };
 
 createFolder();
-readFolder();
+copyFolder();
