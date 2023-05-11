@@ -4,7 +4,7 @@ const fs = require('fs');
 const createFolder = async () => {
   try {
     await fs.promises.mkdir(path.join(__dirname, 'files-copy'), {
-      recursive: false,
+      recursive: true,
     });
   } catch (err) {
     console.log(err);
@@ -24,5 +24,16 @@ const copyFolder = async () => {
   }
 };
 
-createFolder();
-copyFolder();
+(async () => {
+  const files = await fs.promises.readdir(path.join(__dirname, 'files-copy'));
+
+  files.forEach(file => {
+    fs.rm(path.join(__dirname, 'files-copy', `${file}`), (err) => {
+      
+    });
+
+  });
+  createFolder();
+  copyFolder();
+})();
+
