@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 
-const output = fs.createWriteStream(path.join(__dirname, 'bundle.css'));
+const output = fs.createWriteStream(path.join(__dirname, 'project-dist', 'bundle.css'));
 
 const createBundle = async () => {
   const files = await fs.promises.readdir(path.join(__dirname, 'styles'), { withFileTypes: true });

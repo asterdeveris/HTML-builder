@@ -57,19 +57,17 @@ copyFiles(
 );
 mergeFiles(
   path.join(__dirname, 'styles'),
-  path.join(__dirname, 'project-dist', 'styles.css')
+  path.join(__dirname, 'project-dist', 'style.css')
 );
 
 (async () => {
   const readdir = await fs.promises.readdir(path.join(__dirname, 'components'));
-  
-  
+
   fs.readFile(path.join(__dirname, 'template.html'), 'utf-8', (err, data) => {
     let html = data;
     readdir.forEach((el) => {
       const elName = el.replace('.html', '');
       if (html.includes(`{{${elName}}}`)) {
-
         fs.readFile(
           path.join(__dirname, 'components', `${el}`),
           'utf-8',
@@ -81,10 +79,10 @@ mergeFiles(
               html,
               (err) => {
                 if (err) console.log(err);
-                console.log(html, 1);
               }
             );
-          });
+          }
+        );
       }
     });
   });
